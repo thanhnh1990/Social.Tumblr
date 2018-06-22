@@ -19,7 +19,8 @@ namespace tumblr
 
         private void start_Click(object sender, EventArgs e)
         {
-
+            Hub a = new Hub();
+            a.Photo_Posts();
         }
     }
 }
