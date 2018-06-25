@@ -7,6 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using DontPanic.TumblrSharp;
+using DontPanic.TumblrSharp.Client;
 
 namespace tumblr
 {

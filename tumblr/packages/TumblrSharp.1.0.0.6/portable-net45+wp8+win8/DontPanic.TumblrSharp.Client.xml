@@ -1,0 +1,1723 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DontPanic.TumblrSharp.Client</name>
+    </assembly>
+    <members>
+        <member name="T:DontPanic.TumblrSharp.Client.AnswerPost">
+            <summary>
+            Represents an answer post.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.BasePost">
+            <summary>
+            Base class for post types.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.BlogName">
+            <summary>
+            The short name used to uniquely identify a blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Id">
+             <summary>
+            The post identifier.
+             </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Type">
+            <summary>
+            The post type.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Url">
+            <summary>
+            The url of the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Timestamp">
+            <summary>
+            The date and time of the post (in local time).
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.NotesCount">
+            <summary>
+            The number of notes (likes and reblogs) for the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Format">
+            <summary>
+            The <see cref="T:DontPanic.TumblrSharp.PostFormat"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.ReblogKey">
+            <summary>
+            The key to use to reblog the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Tags">
+            <summary>
+            The tags applied to the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.SourceUrl">
+            <summary>
+            The url to the blog that is the source of the post, if any.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.SourceTitle">
+            <summary>
+            The title of the blog which is the source of the post, if any.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.NumberOfPostsInResponse">
+            <summary>
+            The number of posts in the response (can be used for pagination).
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.State">
+            <summary>
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.Liked">
+            <summary>
+            Indicates if the current user has already liked the post or not.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.IsMobile">
+            <summary>
+            Indicates whether the post was created via mobile/email publishing.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.IsBookmarklet">
+            <summary>
+            Indicates whether the post was created via the Tumblr bookmarklet.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedFromId">
+            <summary>
+            The id of a post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedFromUrl">
+            <summary>
+            Name of a blog being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedFromName">
+            <summary>
+            Title of a post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedFromTitle">
+            <summary>
+            URL of a post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedRootId">
+            <summary>
+            The id of an original post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedRootUrl">
+            <summary>
+            Root name of a post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedRootName">
+            <summary>
+            Title of the original post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BasePost.RebloggedRootTitle">
+            <summary>
+            URL of the original post being reblogged.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AnswerPost.AskingName">
+            <summary>
+            Gets or sets the name of the user asking the question.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AnswerPost.AskingUrl">
+            <summary>
+            Gets or sets the url of the blog of the user asking the question.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AnswerPost.Question">
+            <summary>
+            Gets or sets tquestion.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AnswerPost.Answer">
+            <summary>
+            Gets or sets the answer.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.AudioPost">
+            <summary>
+            Represents an audio post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.Caption">
+            <summary>
+            Gets or sets the user-supplied caption.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.AudioUrl">
+            <summary>
+            Gets or sets the url to the audio file.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.Player">
+            <summary>
+            Gets or sets the HTML for embedding the audio player.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.PlaysCount">
+            <summary>
+            Gets or sets the number of times the audio post has been played.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.AlbumArt">
+            <summary>
+            Gets or sets the location of the audio file's ID3 album art image.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.Artist">
+            <summary>
+            Gets or sets the audio file's ID3 artist value
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.Album">
+            <summary>
+            Gets or sets the audio file's ID3 album value.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.TrackName">
+            <summary>
+            Gets or sets the audio file's ID3 title value.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.TrackNumber">
+            <summary>
+            Gets or sets the audio file's ID3 track value.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.AudioPost.Year">
+            <summary>
+            Gets or sets the audio file's ID3 year value.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.BlogBase">
+            <summary>
+            Contains common properties for a blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogBase.Title">
+            <summary>
+            The display title of the blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogBase.Name">
+            <summary>
+            The short blog name that appears before tumblr.com in a 
+            standard blog hostname (and before the domain in a custom blog hostname).
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogBase.Url">
+            <summary>
+            The blog url.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogBase.LastUpdated">
+            <summary>
+            The date and time when the blog was last updated (in local time).
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.BlogInfo">
+            <summary>
+            Contains information about a blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogInfo.PostsCount">
+            <summary>
+            The total number of posts to this blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogInfo.Description">
+            <summary>
+            The blog's description.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogInfo.IsAskEnabled">
+            <summary>
+            Indicates whether the blog allows questions.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogInfo.IsAnonAskEnabled">
+            <summary>
+            Indicates whether the blog allows anonymous questions. Returned only if 
+            <see cref="P:DontPanic.TumblrSharp.Client.BlogInfo.IsAskEnabled"/> is <b>true</b>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogInfo.LikesCount">
+            <summary>
+            Number of likes for this user. Returned only if this is 
+            the user's primary blog and sharing of likes is enabled.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.BlogInfo.IsNsfw">
+            <summary>
+            Whether the blog is marked as NSFW or not.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.BoolConverter">
+            <summary>
+            Converts "Y" and "N" to boolean.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.BoolConverter.CanConvert(System.Type)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.BoolConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.BoolConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.ChatPost">
+            <summary>
+            Represents a chat post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.ChatPost.Title">
+            <summary>
+            The optional title of the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.ChatPost.Body">
+            <summary>
+            The full chat body.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.ChatPost.Dialogue">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.ChatFragment"/> instances, representing the chat.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.ChatFragment">
+            <summary>
+            Represents a fragment of a <see cref="T:DontPanic.TumblrSharp.Client.ChatPost"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.ChatFragment.Label">
+            <summary>
+            The label of the speaker.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.ChatFragment.Name">
+            <summary>
+            The name of the speaker.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.ChatFragment.Phrase">
+            <summary>
+            The text.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.EnumConverter">
+            <summary>
+            Generic converter for enumerations.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.EnumConverter.CanConvert(System.Type)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.EnumConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.EnumConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.Followers">
+            <summary>
+            Contains information about a blog's followers.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Followers.Count">
+            <summary>
+            The number of users currently following the blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Followers.Result">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.BlogBase"/> instances, representing information
+            about each user following the blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Followers.UserName">
+            <summary>
+            The user's name on tumblr.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Followers.PrimaryBlogUrl">
+            <summary>
+            The URL of the user's primary blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Followers.LastUpdated">
+            <summary>
+            The date and time when the blog was last updated (in local time).
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.Following">
+            <summary>
+            Contains the blogs that a user is following.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Following.Count">
+            <summary>
+            The number of blogs the user is following.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Following.Result">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.BlogBase"/> instances, representing information
+            about each followed blog.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.Likes">
+            <summary>
+            Contains the user's likes.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Likes.Count">
+            <summary>
+            Total number of liked posts.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Likes.Result">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.BasePost"/> instances, representing
+            the liked posts.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.LinkPost">
+            <summary>
+            Represents a link post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.LinkPost.Title">
+            <summary>
+            The title of the page the link points to.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.LinkPost.LinkUrl">
+            <summary>
+            The link.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.LinkPost.Description">
+            <summary>
+            A user-supplied description.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.PhotoPost">
+            <summary>
+            Represents a photo post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PhotoPost.Caption">
+            <summary>
+            The user-supplied caption.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PhotoPost.PhotoSet">
+            <summary>
+            An array of <see cref="P:DontPanic.TumblrSharp.Client.PhotoPost.Photo"/> instances.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PhotoPost.Photo">
+            <summary>
+            Gets the main (or only, for photo posts with only one picture) photo for the post.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.Photo">
+            <summary>
+            Represents a photo in a <see cref="T:DontPanic.TumblrSharp.Client.PhotoPost"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Photo.Caption">
+            <summary>
+            User supplied caption for the individual photo (Photosets only).
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Photo.AlternateSizes">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.PhotoInfo"/> instances for alternate (thumbnail)
+            versions of the photo.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Photo.OriginalSize">
+            <summary>
+            A <see cref="T:DontPanic.TumblrSharp.Client.PhotoInfo"/> instance representing the details of the full-size photo.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.PhotoInfo">
+            <summary>
+            Represents information about a <see cref="T:DontPanic.TumblrSharp.Client.Photo"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PhotoInfo.Width">
+            <summary>
+            The photo width, in pixels.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PhotoInfo.Height">
+            <summary>
+            The photo height, in pixels.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PhotoInfo.ImageUrl">
+            <summary>
+            The url of the photo.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.PostArrayConverter">
+            <summary>
+            Converts post objects to the proper post type.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.PostArrayConverter.CanConvert(System.Type)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.PostArrayConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.PostArrayConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.PostCreationInfo">
+            <summary>
+            Represents information about a newly created post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.PostCreationInfo.PostId">
+            <summary>
+            The identifier of the post.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.Posts">
+            <summary>
+            Contains information about a blog's posts.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Posts.Blog">
+            <summary>
+            A <see cref="T:DontPanic.TumblrSharp.Client.BlogInfo"/> instance representing information about
+            the blog for which the posts are being retrieved.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Posts.Result">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.BasePost"/> instances, containing the 
+            blog's posts.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.QuotePost">
+            <summary>
+            Represents a quote post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.QuotePost.Text">
+            <summary>
+            The text of the quote.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.QuotePost.Source">
+            <summary>
+            Full HTML for the source of the quote.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.TextPost">
+            <summary>
+            Represents a text post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.TextPost.Title">
+            <summary>
+            The optional title of the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.TextPost.Body">
+            <summary>
+            The full post body.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.TimestampConverter">
+            <summary>
+            Converts a timestamp to a <see cref="T:System.DateTime"/>.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TimestampConverter.CanConvert(System.Type)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TimestampConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TimestampConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exclude/>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.TumblrClient">
+            <summary>
+            Encapsulates the Tumblr API.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.#ctor(DontPanic.TumblrSharp.IHmacSha1HashProvider,System.String,System.String,DontPanic.TumblrSharp.OAuth.Token)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> class.
+            </summary>
+            <param name="hashProvider">
+            A <see cref="T:DontPanic.TumblrSharp.IHmacSha1HashProvider"/> implementation used to generate a
+            HMAC-SHA1 hash for OAuth purposes.
+            </param>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <param name="oAuthToken">
+            An optional access token for the API. If no access token is provided, only the methods
+            that do not require OAuth can be invoked successfully.
+            </param>
+            <remarks>
+             You can get a consumer key and a consumer secret by registering an application with Tumblr:<br/>
+            <br/>
+            http://www.tumblr.com/oauth/apps
+            </remarks>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetBlogInfoAsync(System.String)">
+            <summary>
+            Asynchronously retrieves general information about the blog, such as the title, number of posts, and other high-level data.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#blog-info.
+            </remarks>
+            <param name="blogName">
+            The name of the blog.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.BlogInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetPostsAsync(System.String,System.Int64,System.Int32,DontPanic.TumblrSharp.PostType,System.Boolean,System.Boolean,DontPanic.TumblrSharp.PostFilter,System.String)">
+            <summary>
+            Asynchronously retrieves published posts from a blog.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#posts
+            </remarks>
+            <param name="blogName">
+            The name of the blog.
+            </param>
+            <param name="startIndex">
+            The offset at which to start retrieving the posts. Use 0 to start retrieving from the latest post.
+            </param>
+            <param name="count">
+            The number of posts to retrieve. Must be between 1 and 20.
+            </param>
+            <param name="type">
+            The <see cref="T:DontPanic.TumblrSharp.PostType"/> to retrieve.
+            </param>
+            <param name="includeReblogInfo">
+            Whether or not to include reblog info with the posts.
+            </param>
+            <param name="includeNotesInfo">
+            Whether or not to include notes info with the posts.
+            </param>
+            <param name="filter">
+            A <see cref="T:DontPanic.TumblrSharp.PostFilter"/> to apply.
+            </param>
+            <param name="tag">
+            A tag to filter by.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.Posts"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetPostAsync(System.Int64,System.Boolean,System.Boolean)">
+            <summary>
+            Asynchronously retrieves a specific post by id.
+            </summary>
+            <param name="id">
+            The id of the post to retrieve.
+            </param>
+            <param name="includeReblogInfo">
+            Whether or not to include reblog info with the posts.
+            </param>
+            <param name="includeNotesInfo">
+            Whether or not to include notes info with the posts.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.BasePost"/> instance representing the desired post. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a 
+            <see cref="T:DontPanic.TumblrSharp.TumblrException"/> if the post with the specified id cannot be found.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="id"/> is less than 0.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetBlogLikesAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Asynchronously retrieves the publicly exposed likes from a blog.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#blog-likes
+            </remarks>
+            <param name="blogName">
+            The name of the blog.
+            </param>
+            <param name="startIndex">
+            The offset at which to start retrieving the likes. Use 0 to start retrieving from the latest like.
+            </param>
+            <param name="count">
+            The number of likes to retrieve. Must be between 1 and 20.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.Likes"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetFollowersAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Asynchronously retrieves a blog's followers.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#blog-followers
+            </remarks>
+            <param name="blogName">
+            The name of the blog.
+            </param>
+            <param name="startIndex">
+            The offset at which to start retrieving the followers. Use 0 to start retrieving from the latest follower.
+            </param>
+            <param name="count">
+            The number of followers to retrieve. Must be between 1 and 20.
+            </param>
+            <returns>
+             A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.Followers"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            A <see cref="T:DontPanic.TumblrSharp.Client.Followers"/> instance.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.CreatePostAsync(System.String,DontPanic.TumblrSharp.PostData)">
+            <summary>
+            Asynchronously creates a new post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#posting
+            </remarks>
+            <param name="blogName">
+            The name of the blog where to post to (must be one of the current user's blogs).
+            </param>
+            <param name="postData">
+            The data that represents the type of post to create. See <see cref="T:DontPanic.TumblrSharp.PostData"/> for how
+            to create various post types.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.PostCreationInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="postData"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.CreatePostAsync(System.String,DontPanic.TumblrSharp.PostData,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a new post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#posting
+            </remarks>
+            <param name="blogName">
+            The name of the blog where to post to (must be one of the current user's blogs).
+            </param>
+            <param name="postData">
+            The data that represents the type of post to create. See <see cref="T:DontPanic.TumblrSharp.PostData"/> for how
+            to create various post types.
+            </param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> that can be used to cancel the operation.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.PostCreationInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="postData"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.EditPostAsync(System.String,System.Int64,DontPanic.TumblrSharp.PostData)">
+            <summary>
+            Asynchronously edits an existing post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#editing
+            </remarks>
+            <param name="blogName">
+            The name of the blog where the post to edit is (must be one of the current user's blogs).
+            </param>
+            <param name="postId">
+            The identifier of the post to edit.
+            </param>
+            <param name="postData">
+            The data that represents the updated information for the post. See <see cref="T:DontPanic.TumblrSharp.PostData"/> for how
+            to create various post types.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.PostCreationInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="postData"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="postId"/> is less than 0.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.EditPostAsync(System.String,System.Int64,DontPanic.TumblrSharp.PostData,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously edits an existing post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#editing
+            </remarks>
+            <param name="blogName">
+            The name of the blog where the post to edit is (must be one of the current user's blogs).
+            </param>
+            <param name="postId">
+            The identifier of the post to edit.
+            </param>
+            <param name="postData">
+            The data that represents the updated information for the post. See <see cref="T:DontPanic.TumblrSharp.PostData"/> for how
+            to create various post types.
+            </param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> that can be used to cancel the operation.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.PostCreationInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="postData"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="postId"/> is less than 0.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.ReblogAsync(System.String,System.Int64,System.String,System.String)">
+            <summary>
+            Asynchronously reblogs a post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#reblogging
+            </remarks>
+            <param name="blogName">
+            The name of the blog where to reblog the psot (must be one of the current user's blogs).
+            </param>
+            <param name="postId">
+            The identifier of the post to reblog.
+            </param>
+            <param name="reblogKey">
+            The post reblog key.
+            </param>
+            <param name="comment">
+            An optional comment to add to the reblog.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.PostCreationInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="reblogKey"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            /// <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="reblogKey"/> is empty.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetQueuedPostsAsync(System.String,System.Int64,System.Int32,DontPanic.TumblrSharp.PostFilter)">
+            <summary>
+            Asynchronously returns posts in the current user's queue.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#blog-queue
+            </remarks>
+            <param name="blogName">
+            The name of the blog for which to retrieve queued posts.
+            </param>
+            <param name="startIndex">
+            The offset at which to start retrieving the posts. Use 0 to start retrieving from the latest post.
+            </param>
+            <param name="count">
+            The number of posts to retrieve. Must be between 1 and 20.
+            </param>
+            <param name="filter">
+            A <see cref="T:DontPanic.TumblrSharp.PostFilter"/> to apply.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry an array of posts. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetDraftPostsAsync(System.String,System.Int64,DontPanic.TumblrSharp.PostFilter)">
+            <summary>
+            Asynchronously returns draft posts.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#blog-drafts
+            </remarks>
+            <param name="blogName">
+            The name of the blog for which to retrieve drafted posts. 
+            </param>
+            <param name="sinceId">
+            Return posts that have appeared after the specified ID. Use this parameter to page through 
+            the results: first get a set of posts, and then get posts since the last ID of the previous set. 
+            </param>
+            <param name="filter">
+            A <see cref="T:DontPanic.TumblrSharp.PostFilter"/> to apply.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry an array of posts. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="sinceId"/> is less than 0.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetSubmissionPostsAsync(System.String,System.Int64,DontPanic.TumblrSharp.PostFilter)">
+            <summary>
+            Asynchronously retrieves submission posts.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#blog-submissions
+            </remarks>
+            <param name="blogName">
+            The name of the blog for which to retrieve submission posts. 
+            </param>
+            <param name="startIndex">
+            The post number to start at. Pass 0 to start from the first post.
+            </param>
+            <param name="filter">
+            A <see cref="T:DontPanic.TumblrSharp.PostFilter"/> to apply.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry an array of posts. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="startIndex"/> is less than 0.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.DeletePostAsync(System.String,System.Int64)">
+            <summary>
+            Asynchronously deletes a post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#deleting-posts
+            </remarks>
+            <param name="blogName">
+            The name of the blog to which the post to delete belongs.
+            </param>
+            <param name="postId">
+            The identifier of the post to delete.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task fails, <see cref="P:System.Threading.Tasks.Task.Exception"/> 
+            will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/> representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogName"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="postId"/> is less than 0.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetUserInfoAsync">
+            <summary>
+            Asynchronously retrieves the user's account information that matches the OAuth credentials submitted with the request.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#user-methods
+            </remarks>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.UserInfo"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry the <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            generated during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetFollowingAsync(System.Int64,System.Int32)">
+            <summary>
+            Asynchronously retrieves the blog that the current user is following.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-ug-following
+            </remarks>
+            <param name="startIndex">
+            The offset at which to start retrieving the followed blogs. Use 0 to start retrieving from the latest followed blog.
+            </param>
+            <param name="count">
+            The number of following blogs to retrieve. Must be between 1 and 20.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.Following"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry the <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            generated during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetLikesAsync(System.Int64,System.Int32)">
+            <summary>
+            Asynchronously retrieves the current user's likes.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-ug-likes
+            </remarks>
+            <param name="startIndex">
+            The offset at which to start retrieving the likes. Use 0 to start retrieving from the latest like.
+            </param>
+            <param name="count">
+            The number of likes to retrieve. Must be between 1 and 20.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.Likes"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry the <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            generated during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.LikeAsync(System.Int64,System.String)">
+            <summary>
+            Asynchronously likes a post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-up-like
+            </remarks>
+            <param name="postId">
+            The identifier of the post to like.
+            </param>
+            <param name="reblogKey">
+            The reblog key for the post.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task fails, <see cref="P:System.Threading.Tasks.Task.Exception"/> 
+            will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="reblogKey"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="reblogKey"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="postId"/> is less than 0.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.UnlikeAsync(System.Int64,System.String)">
+            <summary>
+            Asynchronously unlikes a post.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-up-unlike
+            </remarks>
+            <param name="postId">
+            The identifier of the post to like.
+            </param>
+            <param name="reblogKey">
+            The reblog key for the post.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task fails, <see cref="P:System.Threading.Tasks.Task.Exception"/> 
+            will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="reblogKey"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="reblogKey"/> is empty.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="postId"/> is less than 0.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.FollowAsync(System.String)">
+            <summary>
+            Asynchronously follows a blog.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-up-follow
+            </remarks>
+            <param name="blogUrl">
+            The url of the blog to follow.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task fails, <see cref="P:System.Threading.Tasks.Task.Exception"/> 
+            will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogUrl"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogUrl"/> is empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.UnfollowAsync(System.String)">
+            <summary>
+            Asynchronously unfollows a blog.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-up-unfollow
+            </remarks>
+            <param name="blogUrl">
+            The url of the blog to unfollow.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task fails, <see cref="P:System.Threading.Tasks.Task.Exception"/> 
+            will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="blogUrl"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="blogUrl"/> is empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetTaggedPostsAsync(System.String,System.Nullable{System.DateTime},System.Int32,DontPanic.TumblrSharp.PostFilter)">
+            <summary>
+            Asynchronously retrieves posts that have been tagged with a specific <paramref name="tag"/>.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-up-tagged
+            </remarks>
+            <param name="tag">
+            The tag on the posts to retrieve.
+            </param>
+            <param name="before">
+            The timestamp of when to retrieve posts before. 
+            </param>
+            <param name="count">
+            The number of posts to retrieve.
+            </param>
+            <param name="filter">
+            A <see cref="T:DontPanic.TumblrSharp.PostFilter"/>.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry an array of posts. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="tag"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="tag"/> is empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="count"/> is less than 1 or greater than 20.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetDashboardPostsAsync(System.Int64,System.Int64,System.Int32,DontPanic.TumblrSharp.PostType,System.Boolean,System.Boolean)">
+            <summary>
+            Asynchronously retrieves posts from the current user's dashboard.
+            </summary>
+            See:  http://www.tumblr.com/docs/en/api/v2#m-ug-dashboard
+            <param name="sinceId">
+             Return posts that have appeared after the specified ID. Use this parameter to page through the results: first get a set 
+             of posts, and then get posts since the last ID of the previous set.  
+            </param>
+            <param name="startIndex">
+            The post number to start at.
+            </param>
+            <param name="count">
+            The number of posts to return.
+            </param>
+            <param name="type">
+            The <see cref="T:DontPanic.TumblrSharp.PostType"/> to return.
+            </param>
+            <param name="includeReblogInfo">
+            Whether or not the response should include reblog info.
+            </param>
+            <param name="includeNotesInfo">
+            Whether or not the response should include notes info.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry an array of posts. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="sinceId"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.GetUserLikesAsync(System.Int32,System.Int32)">
+            <summary>
+            Asynchronously retrieves the current user's likes.
+            </summary>
+            <remarks>
+            See: http://www.tumblr.com/docs/en/api/v2#m-ug-likes
+            </remarks>
+            <param name="startIndex">
+            The offset at which to start retrieving the likes. Use 0 to start retrieving from the latest like.
+            </param>
+            <param name="count">
+            The number of likes to retrieve. Must be between 1 and 20.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <see cref="T:DontPanic.TumblrSharp.Client.Likes"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            This <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> instance does not have an OAuth token specified.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="startIndex"/> is less than 0.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="count"/> is less than 1 or greater than 20.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.Client.TumblrClient.Dispose(System.Boolean)">
+            <summary>
+            Disposes of the object.
+            </summary>
+            <param name="disposing">
+            <b>true</b> if managed resources have to be disposed; otherwise <b>false</b>.
+            </param>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.UserBlogInfo">
+            <summary>
+            Contains information about a user's blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.IsTweetEnabled">
+            <summary>
+            Whether the automatic tweet of posts is enabled or not.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.IsFacebookPostEnabled">
+            <summary>
+            Whether the automatic posting to Facebook of posts is enabled or not.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.BlogType">
+            <summary>
+            The type of blog (public or private).
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.IsSharingLikes">
+            <summary>
+            Whether if the user likes are public or not.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.MessagesCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.QueueCount">
+            <summary>
+            The number of posts in <see cref="F:DontPanic.TumblrSharp.PostCreationState.Queue"/> state.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.DraftsCount">
+            <summary>
+            The number of posts in <see cref="F:DontPanic.TumblrSharp.PostCreationState.Draft"/> state.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.IsPrimary">
+            <summary>
+            Indicates if this is the user's primary blog.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserBlogInfo.FollowersCount">
+            <summary>
+            Total count of followers for this blog.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.UserInfo">
+            <summary>
+            Contains information about a user's account.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserInfo.FollowingCount">
+            <summary>
+            The number of blogs the user is following
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserInfo.DefaultPostFormat">
+            <summary>
+            The user's default <see cref="T:DontPanic.TumblrSharp.PostFormat"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserInfo.Name">
+            <summary>
+            The user's tumblr short name.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserInfo.LikesCount">
+            <summary>
+            The total count of the user's likes
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.UserInfo.Blogs">
+            <summary>
+            An array of <see cref="T:DontPanic.TumblrSharp.Client.UserBlogInfo"/> instances, containing information
+            about the user's blogs.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.VideoPost">
+            <summary>
+            Represents a video post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.Caption">
+            <summary>
+            The user-supplied caption.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.VideoUrl">
+            <summary>
+            Url to the video file (may be null if the video can only be embedded, i.e.: YouTube).
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.ThumbnailUrl">
+            <summary>
+            Url to the thumbnail image for the video.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.ThumbnailWidth">
+            <summary>
+            The thumbnail image width.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.ThumbnailHeight">
+            <summary>
+            The thumbnail image height.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.Player">
+            <summary>
+            An array of <see cref="P:DontPanic.TumblrSharp.Client.VideoPost.Player"/> instances.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.Duration">
+            <summary>
+            The video duration in seconds, or 0 if the duration is not specified.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.VideoPost.IsHtml5Capable">
+            <summary>
+            Signals whether the video is HTML5 capable or not.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.Client.Player">
+            <summary>
+            Represents an embeddable player for a video in a <see cref="T:DontPanic.TumblrSharp.Client.VideoPost"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Player.Width">
+            <summary>
+            The width of the player.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.Client.Player.EmbedCode">
+            <summary>
+            The HTML code for embedding the video.
+            </summary>
+        </member>
+    </members>
+</doc>

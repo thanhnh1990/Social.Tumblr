@@ -1,0 +1,1985 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DontPanic.TumblrSharp</name>
+    </assembly>
+    <members>
+        <member name="T:DontPanic.TumblrSharp.ApiMethod">
+            <summary>
+            Encapsulates all the data required to make a Tumblr API call.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.ApiMethod.#ctor(System.String,DontPanic.TumblrSharp.OAuth.Token,System.Net.Http.HttpMethod,DontPanic.TumblrSharp.MethodParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.ApiMethod"/> class.
+            </summary>
+            <param name="methodUrl">
+            The url of the method to call.
+            </param>
+            <param name="oAuthToken">
+            The OAuth <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/> to use for the call. Can be <b>null</b> if the 
+            method does not require OAuth.
+            </param>
+            <param name="httpMethod">
+            The required <see cref="P:DontPanic.TumblrSharp.ApiMethod.HttpMethod"/> for the Tumblr API call. Only GET and
+            POST are supported.
+            </param>
+            <param name="parameters">
+            The parameters for the Tumblr API call. Can be <b>null</b> if the method does not require parameters.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="methodUrl"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="methodUrl"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="httpMethod"/> is not Get or Post.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.ApiMethod.Url">
+            <summary>
+            Gets the url of the Tumblr API method to call.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.ApiMethod.OAuthToken">
+            <summary>
+            Gets the OAuth <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/> to use for the call.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.ApiMethod.HttpMethod">
+            <summary>
+            Gets the required <see cref="P:DontPanic.TumblrSharp.ApiMethod.HttpMethod"/> for the Tumblr API call.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.ApiMethod.Parameters">
+            <summary>
+            Gets the parameters for the Tumblr API call.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.BinaryFile">
+            <summary>
+            Represents a binary file (photo, video or audio).
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.BinaryFile.#ctor(System.Byte[],System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> class.
+            </summary>
+            <param name="data">
+            The binary file content.
+            </param>
+            <param name="fileName">
+            The file name.
+            </param>
+            <param name="mimeType">
+            The file's mime type.
+            </param>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.BinaryFile.#ctor(System.IO.Stream,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> class.
+            </summary>
+            <param name="stream">
+            The binary file content.
+            </param>
+            <param name="fileName">
+            The file name.
+            </param>
+            <param name="mimeType">
+            The file's mime type.
+            </param>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.BinaryFile.Data">
+            <summary>
+            Gets the binary file content.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.BinaryFile.FileName">
+            <summary>
+            Gets the file name.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.BinaryFile.MimeType">
+            <summary>
+            Gets the file's mime type.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.IMethodParameter">
+            <summary>
+            Represents a parameter for an <see cref="T:DontPanic.TumblrSharp.ApiMethod"/>.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.IMethodParameter.AsHttpContent">
+            <summary>
+            Converts the parameter to a <see cref="T:System.Net.Http.HttpContent"/>.
+            </summary>
+            <returns>
+            The parameter as a <see cref="T:System.Net.Http.HttpContent"/>.
+            </returns>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.IMethodParameter.Name">
+            <summary>
+            Gets the parameter name.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.BlogMethod">
+            <summary>
+            Represents a blog API method.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.BlogMethod.#ctor(System.String,System.String,DontPanic.TumblrSharp.OAuth.Token,System.Net.Http.HttpMethod,DontPanic.TumblrSharp.MethodParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.BlogMethod"/> class.
+            </summary>
+            <param name="blogName">
+            The name of the blog target of the method call. Can be passed with or without the trailing ".tumblr.com".
+            </param>
+            <param name="methodName">
+            The name of the method to call. The method url will be automatically built using
+            this information together with the <paramref name="blogName"/>.
+            </param>
+            <param name="oAuthToken">
+            The OAuth <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/> to use for the call. Can be <b>null</b> if the 
+            method does not require OAuth.
+            </param>
+            <param name="httpMethod">
+            The required <see cref="T:System.Net.Http.HttpMethod"/> for the Tumblr API call. Only <see cref="P:System.Net.Http.HttpMethod.Get"/> and
+            <see cref="P:System.Net.Http.HttpMethod.Post"/> are supported.
+            </param>
+            <param name="parameters">
+            The parameters for the Tumblr API call. Can be <b>null</b> if the method does not require parameters.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="methodName"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="blogName"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="methodName"/> is empty.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.BlogType">
+            <summary>
+            Defines the type of a blog.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.BlogType.Public">
+            <summary>
+            Public.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.BlogType.Private">
+            <summary>
+            Private.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.DateTimeHelper">
+            <summary>
+            Converts from Unix-type timestamp to <see cref="T:System.DateTime"/> and vice-versa.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.DateTimeHelper.FromTimestamp(System.Int64)">
+            <summary>
+            Converts from a timestamp to a <see cref="T:System.DateTime"/>. The result is in local time.
+            </summary>
+            <param name="timestamp">
+            The timestamp.
+            </param>
+            <returns>
+            The equivalent <see cref="T:System.DateTime"/> in local time.
+            </returns>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.DateTimeHelper.FromTimestamp(System.Double)">
+            <summary>
+            Converts from a timestamp to a <see cref="T:System.DateTime"/>. The result is in local time.
+            </summary>
+            <param name="timestamp">
+            The timestamp.
+            </param>
+            <returns>
+            The equivalent <see cref="T:System.DateTime"/> in local time.
+            </returns>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.DateTimeHelper.ToTimestamp(System.DateTime)">
+            <summary>
+            Converts from a <see cref="T:System.DateTime"/> to a timestamp.
+            </summary>
+            <param name="date">
+            The <see cref="T:System.DateTime"/>.
+            </param>
+            <returns>
+            The timestamp.
+            </returns>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.IHmacSha1HashProvider">
+            <summary>
+            Provides HMAC-SHA1 hash for signing OAuth requests.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.IHmacSha1HashProvider.ComputeHash(System.String,System.String,System.String)">
+            <summary>
+            Gets a HMAC-SHA1 hash for an OAuth request.
+            </summary>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <param name="oauthSecret">
+            The OAuth secret.
+            </param>
+            <param name="signatureBaseString">
+            The signature base string for which to compute the hash.
+            </param>
+            <returns>
+            A HMAC-SHA1 hash of <paramref name="signatureBaseString"/>.
+            </returns>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.ITumblrClientFactory">
+            <summary>
+            Generic factory for <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/> instances.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.ITumblrClientFactory.Create``1(System.String,System.String,DontPanic.TumblrSharp.OAuth.Token)">
+            <summary>
+            Creates a new Tumblr client instance of type <typeparamref name="TClient"/>.
+            </summary>
+            <typeparam name="TClient">
+            The type of client to create (must derive from <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/>).
+            </typeparam>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <param name="oAuthToken">
+            An optional access token for the API. If no access token is provided, only the methods
+            that do not require OAuth can be invoked successfully.
+            </param>
+            <returns>
+            A new Tumblr client instance of type <typeparamref name="TClient"/>.
+            </returns>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.MethodParameterSet">
+            <summary>
+            A sorted set of <see cref="T:DontPanic.TumblrSharp.IMethodParameter"/> instances.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.MethodParameterSet"/> class.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.#ctor(System.Collections.Generic.IEnumerable{DontPanic.TumblrSharp.IMethodParameter})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.MethodParameterSet"/> class.
+            </summary>
+            <param name="collection">
+            An enumerable list of <see cref="T:DontPanic.TumblrSharp.IMethodParameter"/> instances to insert in the set.
+            </param>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.Add(System.String,System.Int64,System.Nullable{System.Int64})">
+            <summary>
+            Adds a new parameter to the set.
+            </summary>
+            <param name="name">
+            The parameter name.
+            </param>
+            <param name="value">
+            The parameter value.
+            </param>
+            <param name="defaultValue">
+            The parameter's default value.
+            </param>
+            <remarks>
+            Tumblr API methods define default values for most of the method's parameters. A parameter
+            whose value equals to the default value can be omitted from the request; by specifying the 
+            <paramref name="defaultValue"/> the parameter won't be added to the set if its <paramref name="value"/>
+            equals to the default value.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="name"/> name is empty or a whitespace string.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.Add(System.String,System.Double,System.Nullable{System.Double})">
+            <summary>
+            Adds a new parameter to the set.
+            </summary>
+            <param name="name">
+            The parameter name.
+            </param>
+            <param name="value">
+            The parameter value.
+            </param>
+            <param name="defaultValue">
+            The parameter's default value.
+            </param>
+            <remarks>
+            Tumblr API methods define default values for most of the method's parameters. A parameter
+            whose value equals to the default value can be omitted from the request; by specifying the 
+            <paramref name="defaultValue"/> the parameter won't be added to the set if its <paramref name="value"/>
+            equals to the default value.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="name"/> name is empty or a whitespace string.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.Add(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Adds a new parameter to the set.
+            </summary>
+            <param name="name">
+            The parameter name.
+            </param>
+            <param name="value">
+            The parameter value.
+            </param>
+            <param name="defaultValue">
+            The parameter's default value.
+            </param>
+            <remarks>
+            Tumblr API methods define default values for most of the method's parameters. A parameter
+            whose value equals to the default value can be omitted from the request; by specifying the 
+            <paramref name="defaultValue"/> the parameter won't be added to the set if its <paramref name="value"/>
+            equals to the default value.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="name"/> name is empty or a whitespace string.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.Add(System.String,System.Boolean,System.Nullable{System.Boolean})">
+            <summary>
+            Adds a new parameter to the set.
+            </summary>
+            <param name="name">
+            The parameter name.
+            </param>
+            <param name="value">
+            The parameter value.
+            </param>
+            <param name="defaultValue">
+            The parameter's default value.
+            </param>
+            <remarks>
+            Tumblr API methods define default values for most of the method's parameters. A parameter
+            whose value equals to the default value can be omitted from the request; by specifying the 
+            <paramref name="defaultValue"/> the parameter won't be added to the set if its <paramref name="value"/>
+            equals to the default value.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="name"/> name is empty or a whitespace string.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.Add(System.String,System.String,System.String)">
+            <summary>
+            Adds a new parameter to the set.
+            </summary>
+            <param name="name">
+            The parameter name.
+            </param>
+            <param name="value">
+            The parameter value.
+            </param>
+            <param name="defaultValue">
+            The parameter's default value.
+            </param>
+            <remarks>
+            Tumblr API methods define default values for most of the method's parameters. A parameter
+            whose value equals to the default value can be omitted from the request; by specifying the 
+            <paramref name="defaultValue"/> the parameter won't be added to the set if its <paramref name="value"/>
+            equals to the default value.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="name"/> name is empty or a whitespace string.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.MethodParameterSet.Add(System.String,System.Byte[])">
+            <summary>
+            Adds a new parameter to the set.
+            </summary>
+            <param name="name">
+            The parameter name.
+            </param>
+            <param name="value">
+            The parameter value.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="name"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="name"/> name is empty or a whitespace string.
+            </exception>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.OAuth.IOAuthClientFactory">
+            <summary>
+            Factory for <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthClient"/> instances.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.IOAuthClientFactory.Create(System.String,System.String)">
+            <summary>
+            Creates a new <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthClient"/> instance.
+            </summary>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthClient"/> instance.
+            </returns>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.OAuth.OAuthClient">
+            <summary>
+            A client for OAuth. 
+            </summary>
+            <remarks>
+            This class can be used to authorize the application to access the user's account. 
+            If the user authorizes the app, an access token will be generated that can then be 
+            used to make OAuth method calls.
+            </remarks>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthClient.#ctor(DontPanic.TumblrSharp.IHmacSha1HashProvider,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="N:DontPanic.TumblrSharp.OAuth"/> client class.
+            </summary>
+            <param name="hashProvider">
+            A <see cref="T:DontPanic.TumblrSharp.IHmacSha1HashProvider"/> implementation used to generate a
+            HMAC-SHA1 hash for OAuth purposes.
+            </param>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <remarks>
+            You can get a consumer key and a consumer secret by registering an application with Tumblr:<br/>
+            <br/>
+            http://www.tumblr.com/oauth/apps
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="hashProvider"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="consumerKey"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="consumerSecret"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="consumerKey"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="consumerSecret"/> is empty.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthClient.PerformXAuthAsync(System.String,System.String)">
+            <summary>
+            Asynchronously performs XAuth.
+            </summary>
+            <param name="userName">
+            The user name.
+            </param>
+            <param name="password">
+            The user password.
+            </param>
+            <returns>
+            The access <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/>.
+            </returns>
+            <remarks>
+            XAuth is mainly used in mobile applications, where the device does not (or can not) have a 
+            callback url. It uses the user name and password to get the access token from the server.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="userName"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="password"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="userName"/> is empty.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="password"/> is empty.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:DontPanic.TumblrSharp.OAuth.OAuthException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		Could not determine oauth_token and oauth_token_secret from server response.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		An exception occurred during the method call.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthClient.GetRequestTokenAsync(System.String)">
+            <summary>
+            Asynchronously gets a request token.
+            </summary>
+            <param name="callbackUrl">
+            The server redirects Users to this URL after they authorize access to their private data.
+            </param>
+            <returns>
+            The request token.
+            </returns>
+            <remarks>
+            The Consumer obtains an unauthorized Request Token by asking the Service Provider to issue a Token. 
+            The Request Token’s sole purpose is to receive User approval and can only be used to obtain an Access Token.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="callbackUrl"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="callbackUrl"/> is empty.
+            </exception>
+            <exception cref="T:DontPanic.TumblrSharp.OAuth.OAuthException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		Could not determine oauth_token and oauth_token_secret from server response.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		An exception occurred during the method call.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthClient.GetAuthorizeUrl(DontPanic.TumblrSharp.OAuth.Token)">
+            <summary>
+            Builds the url that is required to connect to the server, where the server will authenticate the user
+            and ask for authorization.
+            </summary>
+            <param name="requestToken">
+            The request token obtained during the call to <see cref="M:DontPanic.TumblrSharp.OAuth.OAuthClient.GetRequestTokenAsync(System.String)"/>.
+            </param>
+            <returns>
+            The <see cref="T:System.Uri"/> where to direct the user to obtain authorization.
+            </returns>
+            <remarks>
+            After the User authenticates with the Service Provider and grants permission for Consumer access, the Consumer will be 
+            notified that the Request Token has been authorized and ready to be exchanged for an Access Token. The Service Provider 
+            will construct an HTTP GET request URL, and redirects the User’s web browser to that URL with the following parameters: 
+            <b>oauth_token</b> which is the request token and <b>oauth_verifier</b> which is the verification code tied to the request token.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="requestToken"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="requestToken"/>.Key is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="requestToken"/>.Key is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthClient.GetAccessTokenAsync(DontPanic.TumblrSharp.OAuth.Token,System.String)">
+            <summary>
+            Gets the authorized access token that can be used to make OAuth calls.
+            </summary>
+            <param name="requestToken">
+            The request token sent from the server to the <b>callback url</b>.
+            </param>
+            <param name="verifierUrl">
+            The verifier url returned from the server.
+            </param>
+            <returns>
+            The access token.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="requestToken"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="verifierUrl"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="verifierUrl"/> is empty.
+            </exception>
+            <exception cref="T:DontPanic.TumblrSharp.OAuth.OAuthException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		Could not determine oauth_token and oauth_token_secret from server response.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		An exception occurred during the method call.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.OAuth.OAuthException">
+            <summary>
+            Represents an error that occour during a OAuth call.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthException"/> class.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.OAuthException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthException"/> class.
+            </summary>
+            <param name="message">
+            The error message.
+            </param>
+            <param name="innerException">
+            An optional inner exception.
+            </param>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.OAuth.Token">
+            <summary>
+            Represents a token for OAuth.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.Token.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/> class.
+            </summary>
+            <param name="key">
+            The token's key.
+            </param>
+            <param name="secret">
+            The token's secret.
+            </param>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.Token.Equals(DontPanic.TumblrSharp.OAuth.Token)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.Token.GetHashCode">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.Token.Equals(System.Object)">
+            <exclude/>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuth.Token.ToString">
+            <exclude/>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.OAuth.Token.Key">
+            <summary>
+            Gets the token's key.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.OAuth.Token.Secret">
+            <summary>
+            Gets the token's secret.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.OAuth.Token.IsValid">
+            <summary>
+            <b>true</b> is the token is valid; otherwise <b>false</b>.
+            </summary>
+            <remarks>
+            A token is valid if both <see cref="P:DontPanic.TumblrSharp.OAuth.Token.Key"/> and <see cref="P:DontPanic.TumblrSharp.OAuth.Token.Secret"/> are not null or empty.
+            </remarks>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.PostCreationState">
+            <summary>
+            Defines the creation state of a post.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostCreationState.Published">
+            <summary>
+            The post will be created as published.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostCreationState.Draft">
+            <summary>
+            The post will be created as draft.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostCreationState.Queue">
+            <summary>
+            The post will be created queued.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostCreationState.Private">
+            <summary>
+            The post will be created as private.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.PostData">
+            <summary>
+            Represents a post to be submitted to a Tumblr blog.
+            </summary>
+            <remarks>
+            This class cannot be instantiated directly. Use one of the static factory methods to
+            create an instance of this class.
+            </remarks>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.ToMethodParameterSet">
+            <summary>
+            Converts the current instance to a <see cref="T:DontPanic.TumblrSharp.MethodParameterSet"/>/
+            </summary>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.MethodParameterSet"/>.
+            </returns>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateText(System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a text post.
+            </summary>
+            <param name="body">
+            The body of the text post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the text post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="body"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="body"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateText(System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a text post.
+            </summary>
+            <param name="body">
+            The body of the text post.
+            </param>
+            <param name="title">
+            The title of the text post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="body"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="body"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateText(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a text post.
+            </summary>
+            <param name="body">
+            The body of the text post.
+            </param>
+            <param name="title">
+            The title of the text post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="body"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="body"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateText(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a text post.
+            </summary>
+            <param name="body">
+            The body of the text post.
+            </param>
+            <param name="title">
+            The title of the text post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="body"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="body"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(DontPanic.TumblrSharp.BinaryFile)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photo">
+            A photo to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photo"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(DontPanic.TumblrSharp.BinaryFile,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photo">
+            A photo to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the photo post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photo"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(System.Collections.Generic.IEnumerable{DontPanic.TumblrSharp.BinaryFile})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photos">
+            A list of photos to upload, defined as <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instances.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photos"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="photos"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(System.Collections.Generic.IEnumerable{DontPanic.TumblrSharp.BinaryFile},System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photos">
+            A list of photos to upload, defined as <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instances.
+            </param>
+            <param name="caption">
+            The caption for the photo post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photos"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="photos"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(System.Collections.Generic.IEnumerable{DontPanic.TumblrSharp.BinaryFile},System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photos">
+            A list of photos to upload, defined as <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instances.
+            </param>
+            <param name="caption">
+            The caption for the photo post.
+            </param>
+            <param name="clickThroughUrl">
+            The photo(s) click trough url.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photos"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="photos"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(System.Collections.Generic.IEnumerable{DontPanic.TumblrSharp.BinaryFile},System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photos">
+            A list of photos to upload, defined as <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instances.
+            </param>
+            <param name="caption">
+            The caption for the photo post.
+            </param>
+            <param name="clickThroughUrl">
+            The photo(s) click trough url.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photos"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="photos"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreatePhoto(System.Collections.Generic.IEnumerable{DontPanic.TumblrSharp.BinaryFile},System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a photo post.
+            </summary>
+            <param name="photos">
+            A list of photos to upload, defined as <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instances.
+            </param>
+            <param name="caption">
+            The caption for the photo post.
+            </param>
+            <param name="clickThroughUrl">
+            The photo(s) click trough url.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="photos"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="photos"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateQuote(System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a quote post.
+            </summary>
+            <param name="quote">
+            The quote.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="quote"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="quote"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateQuote(System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a quote post.
+            </summary>
+            <param name="quote">
+            The quote.
+            </param>
+            <param name="source">
+            The quote's source.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="quote"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="quote"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateQuote(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a quote post.
+            </summary>
+            <param name="quote">
+            The quote.
+            </param>
+            <param name="source">
+            The quote's source.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="quote"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="quote"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateQuote(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a quote post.
+            </summary>
+            <param name="quote">
+            The quote.
+            </param>
+            <param name="source">
+            The quote's source.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="quote"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="quote"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateLink(System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a link post.
+            </summary>
+            <param name="url">
+            The url for the link.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateLink(System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a link post.
+            </summary>
+            <param name="url">
+            The url for the link.
+            </param>
+            <param name="title">
+            The display text for the link.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateLink(System.String,System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a link post.
+            </summary>
+            <param name="url">
+            The url for the link.
+            </param>
+            <param name="title">
+            The display text for the link.
+            </param>
+            <param name="description">
+            The link's description.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateLink(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a link post.
+            </summary>
+            <param name="url">
+            The url for the link.
+            </param>
+            <param name="title">
+            The display text for the link.
+            </param>
+            <param name="description">
+            The link's description.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateLink(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a link post.
+            </summary>
+            <param name="url">
+            The url for the link.
+            </param>
+            <param name="title">
+            The display text for the link.
+            </param>
+            <param name="description">
+            The link's description.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateChat(System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a chat post.
+            </summary>
+            <param name="conversation">
+            The chat conversation.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="conversation"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="conversation"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateChat(System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a chat post.
+            </summary>
+            <param name="conversation">
+            The chat conversation.
+            </param>
+            <param name="title">
+            The title of the chat.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="conversation"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="conversation"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateChat(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a chat post.
+            </summary>
+            <param name="conversation">
+            The chat conversation.
+            </param>
+            <param name="title">
+            The title of the chat.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="conversation"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="conversation"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateChat(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a chat post.
+            </summary>
+            <param name="conversation">
+            The chat conversation.
+            </param>
+            <param name="title">
+            The title of the chat.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="conversation"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="conversation"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(DontPanic.TumblrSharp.BinaryFile)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="audioFile">
+            The audio file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="audioFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(DontPanic.TumblrSharp.BinaryFile,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="audioFile">
+            The audio file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the audio post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="audioFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(DontPanic.TumblrSharp.BinaryFile,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="audioFile">
+            The audio file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the audio post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="audioFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(DontPanic.TumblrSharp.BinaryFile,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="audioFile">
+            The audio file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the audio post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="audioFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="url">
+            The url to the audio file to post (the url must not be on Tumblr).
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="url">
+            The url to the audio file to post (the url must not be on Tumblr).
+            </param>
+            <param name="caption">
+            The caption for the audio post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="url">
+            The url to the audio file to post (the url must not be on Tumblr).
+            </param>
+            <param name="caption">
+            The caption for the audio post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateAudio(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for an audio post.
+            </summary>
+            <param name="url">
+            The url to the audio file to post (the url must not be on Tumblr).
+            </param>
+            <param name="caption">
+            The caption for the audio post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="url"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="url"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(DontPanic.TumblrSharp.BinaryFile)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="videoFile">
+            The video file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="videoFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(DontPanic.TumblrSharp.BinaryFile,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="videoFile">
+            The video file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the video post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="videoFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(DontPanic.TumblrSharp.BinaryFile,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="videoFile">
+            The video file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the video post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="videoFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(DontPanic.TumblrSharp.BinaryFile,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="videoFile">
+            The video file to upload, defined as a <see cref="T:DontPanic.TumblrSharp.BinaryFile"/> instance.
+            </param>
+            <param name="caption">
+            The caption for the video post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="videoFile"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="embedCode">
+            The HTML embed code for the video.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="embedCode"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="embedCode"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(System.String,System.String)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="embedCode">
+            The HTML embed code for the video.
+            </param>
+            <param name="caption">
+            The caption for the video post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="embedCode"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="embedCode"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="embedCode">
+            The HTML embed code for the video.
+            </param>
+            <param name="caption">
+            The caption for the video post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="embedCode"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="embedCode"/> is empty.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.PostData.CreateVideo(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},DontPanic.TumblrSharp.PostCreationState)">
+            <summary>
+            Creates the <see cref="T:DontPanic.TumblrSharp.PostData"/> for a video post.
+            </summary>
+            <param name="embedCode">
+            The HTML embed code for the video.
+            </param>
+            <param name="caption">
+            The caption for the video post.
+            </param>
+            <param name="tags">
+            The tags to associate with the post.
+            </param>
+            <param name="state">
+            The <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.PostData"/> instance representing the post.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="embedCode"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="embedCode"/> is empty.
+            </exception>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.PostData.State">
+            <summary>
+            Gets or sets the <see cref="T:DontPanic.TumblrSharp.PostCreationState"/> of the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.PostData.Tags">
+            <summary>
+            Gets the tags associated with the post.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.PostData.Tweet">
+            <summary>
+            Gets or sets the autotweet (if enabled) for this post: set to <b>off</b> 
+            for no tweet, or enter text to override the default tweet.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.PostData.Date">
+            <summary>
+            Gets or sets the post date.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.PostData.Format">
+            <summary>
+            Gets or sets the <see cref="T:DontPanic.TumblrSharp.PostFormat"/>.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.PostData.Slug">
+            <summary>
+            Gets or sets the post slug.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.PostFilter">
+            <summary>
+            Defines the filter for a post.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostFilter.Html">
+            <summary>
+            No filter.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostFilter.Text">
+            <summary>
+            Plain text, no html.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostFilter.Raw">
+            <summary>
+            As entered by the user (no post-processing); if the user writes in Markdown, the Markdown will be returned rather than html.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.PostFormat">
+            <summary>
+            Defines the post format.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostFormat.Html">
+            <summary>
+            Html.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostFormat.Markdown">
+            <summary>
+            Markdown.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.PostType">
+            <summary>
+            Defines the post filter.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.All">
+            <summary>
+            All posts.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Text">
+            <summary>
+            Text.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Quote">
+            <summary>
+            Quote.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Link">
+            <summary>
+            Link.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Answer">
+            <summary>
+            Answer.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Video">
+            <summary>
+            Video.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Audio">
+            <summary>
+            Audio.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Photo">
+            <summary>
+            Photo.
+            </summary>
+        </member>
+        <member name="F:DontPanic.TumblrSharp.PostType.Chat">
+            <summary>
+            Chat.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.TumblrClientBase">
+            <summary>
+            Encapsulates the Tumblr API.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientBase.#ctor(DontPanic.TumblrSharp.IHmacSha1HashProvider,System.String,System.String,DontPanic.TumblrSharp.OAuth.Token)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/> class.
+            </summary>
+            <param name="hashProvider">
+            A <see cref="T:DontPanic.TumblrSharp.IHmacSha1HashProvider"/> implementation used to generate a
+            HMAC-SHA1 hash for OAuth purposes.
+            </param>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <param name="oAuthToken">
+            An optional access token for the API. If no access token is provided, only the methods
+            that do not require OAuth can be invoked successfully.
+            </param>
+            <remarks>
+             You can get a consumer key and a consumer secret by registering an application with Tumblr:<br/>
+            <br/>
+            http://www.tumblr.com/oauth/apps
+            </remarks>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientBase.CallApiMethodAsync``2(DontPanic.TumblrSharp.ApiMethod,System.Func{``0,``1},System.Threading.CancellationToken,System.Collections.Generic.IEnumerable{Newtonsoft.Json.JsonConverter})">
+            <summary>
+            Asynchronously invokes a method on the Tumblr API, and performs a projection on the
+            response before returning the result.
+            </summary>
+            <typeparam name="TResponse">
+            The type of the response received from the API. This must be a type that can be deserialized
+            from the response JSON.
+            </typeparam>
+            <typeparam name="TResult">
+            The actual type that is the result of the method.
+            </typeparam>
+            <param name="method">
+            The <see cref="T:DontPanic.TumblrSharp.ApiMethod"/> to invoke.
+            </param>
+            <param name="projection">
+            The projection function that transforms <typeparamref name="TResponse"/> into <typeparamref name="TResult"/>.
+            </param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> that can be used to cancel the operation.
+            </param>
+            <param name="converters">
+            An optional list of JSON converters that will be used while deserializing the response from the Tumblr API.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <typeparamref name="TResult"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <list type="bullet">
+            <item>
+            	<description>
+            		<paramref name="method"/> is <b>null</b>.
+            	</description>
+            </item>
+            <item>
+            	<description>
+            		<paramref name="projection"/> is <b>null</b>.
+            	</description>
+            </item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientBase.CallApiMethodNoResultAsync(DontPanic.TumblrSharp.ApiMethod,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously invokes a method on the Tumblr API without expecting a response.
+            </summary>
+            <param name="method">
+            The <see cref="T:DontPanic.TumblrSharp.ApiMethod"/> to invoke.
+            </param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> that can be used to cancel the operation.
+            </param>
+            <returns>
+             A <see cref="T:System.Threading.Tasks.Task"/> that can be used to track the operation. If the task fails, <see cref="P:System.Threading.Tasks.Task.Exception"/> 
+             will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/> representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="method"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientBase.CallApiMethodAsync``1(DontPanic.TumblrSharp.ApiMethod,System.Threading.CancellationToken,System.Collections.Generic.IEnumerable{Newtonsoft.Json.JsonConverter})">
+            <summary>
+            Asynchronously invokes a method on the Tumblr API.
+            </summary>
+            <typeparam name="TResult">
+            The type of the response received from the API. This must be a type that can be deserialized
+            from the response JSON.
+            </typeparam>
+            <param name="method">
+            The <see cref="T:DontPanic.TumblrSharp.ApiMethod"/> to invoke.
+            </param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> that can be used to cancel the operation.
+            </param>
+            <param name="converters">
+            An optional list of JSON converters that will be used while deserializing the response from the Tumblr API.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> that can be used to track the operation. If the task succeeds, the <see cref="P:System.Threading.Tasks.Task`1.Result"/> will
+            carry a <typeparamref name="TResult"/> instance. Otherwise <see cref="P:System.Threading.Tasks.Task.Exception"/> will carry a <see cref="T:DontPanic.TumblrSharp.TumblrException"/>
+            representing the error occurred during the call.
+            </returns>
+            <exception cref="T:System.ObjectDisposedException">
+            The object has been disposed.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="method"/> is <b>null</b>.
+            </exception>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientBase.Dispose">
+            <summary>
+            Disposes of the object and the internal HttpClient instance.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientBase.Dispose(System.Boolean)">
+            <summary>
+            Subclasses can override this method to provide custom
+            disposing logic.
+            </summary>
+            <param name="disposing">
+            <b>true</b> if managed resources have to be disposed; otherwise <b>false</b>.
+            </param>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.TumblrClientBase.OAuthToken">
+            <summary>
+            Gets the OAuth <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/> used when the object was created.
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.TumblrException">
+            <summary>
+            Represents an error that occour during a Tumblr API call.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrException.#ctor(System.Net.HttpStatusCode,System.String,System.Collections.Generic.IEnumerable{System.String},System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.TumblrException"/> class.
+            </summary>
+            <param name="statusCode">
+            The <see cref="T:System.Net.HttpStatusCode"/> of the error.
+            </param>
+            <param name="message">
+            The error message.
+            </param>
+            <param name="errors">
+            An optional list of extra errors.
+            </param>
+            <param name="innerException">
+            An optional inner exception.
+            </param>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.TumblrException.StatusCode">
+            <summary>
+            Gets the <see cref="T:System.Net.HttpStatusCode"/> of the error.
+            </summary>
+        </member>
+        <member name="P:DontPanic.TumblrSharp.TumblrException.Errors">
+            <summary>
+            Gets the extra error messages returned from the server (if any).
+            </summary>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.UserMethod">
+            <summary>
+            Represents a user API method.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.UserMethod.#ctor(System.String,DontPanic.TumblrSharp.OAuth.Token,System.Net.Http.HttpMethod,DontPanic.TumblrSharp.MethodParameterSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DontPanic.TumblrSharp.UserMethod"/> class.
+            </summary>
+            <param name="methodName">
+            The name of the method to call. The method url will be automatically built.
+            </param>
+            <param name="oAuthToken">
+            The OAuth <see cref="T:DontPanic.TumblrSharp.OAuth.Token"/> to use for the call. Can be <b>null</b> if the 
+            method does not require OAuth.
+            </param>
+            <param name="httpMethod">
+            The required <see cref="T:System.Net.Http.HttpMethod"/> for the Tumblr API call. Only <see cref="P:System.Net.Http.HttpMethod.Get"/> and
+            <see cref="P:System.Net.Http.HttpMethod.Post"/> are supported.
+            </param>
+            <param name="parameters">
+            The parameters for the Tumblr API call. Can be <b>null</b> if the method does not require parameters.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="methodName"/> is <b>null</b>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="methodName"/> is empty.
+            </exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DontPanic.TumblrSharp.WP8</name>
+    </assembly>
+    <members>
+        <member name="T:DontPanic.TumblrSharp.HmacSha1HashProvider">
+            <summary>
+            Provides an implementation of <see cref="T:DontPanic.TumblrSharp.IHmacSha1HashProvider"/> for signing OAuth requests.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.HmacSha1HashProvider.ComputeHash(System.String,System.String,System.String)">
+            <summary>
+            Gets a HMAC-SHA1 hash for an OAuth request.
+            </summary>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <param name="oauthSecret">
+            The OAuth secret.
+            </param>
+            <param name="signatureBaseString">
+            The signature base string for which to compute the hash.
+            </param>
+            <returns>
+            A HMAC-SHA1 hash of <paramref name="signatureBaseString"/>.
+            </returns>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.OAuthClientFactory">
+            <summary>
+            Factory for <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthClient"/> instances.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.OAuthClientFactory.Create(System.String,System.String)">
+            <summary>
+            Creates a new <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthClient"/> instance.
+            </summary>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <returns>
+            A <see cref="T:DontPanic.TumblrSharp.OAuth.OAuthClient"/> instance.
+            </returns>
+        </member>
+        <member name="T:DontPanic.TumblrSharp.TumblrClientFactory">
+            <summary>
+            Factory for <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/> instances.
+            </summary>
+        </member>
+        <member name="M:DontPanic.TumblrSharp.TumblrClientFactory.Create``1(System.String,System.String,DontPanic.TumblrSharp.OAuth.Token)">
+            <summary>
+            Creates a new Tumblr client instance of type <typeparamref name="TClient"/>.
+            </summary>
+            <remarks>
+            This factory only supports <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/> or <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/> as values
+            for <typeparamref name="TClient"/>.
+            </remarks>
+            <typeparam name="TClient">
+            The type of client to create (must derive from <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/>).
+            </typeparam>
+            <param name="consumerKey">
+            The consumer key.
+            </param>
+            <param name="consumerSecret">
+            The consumer secret.
+            </param>
+            <param name="oAuthToken">
+            An optional access token for the API. If no access token is provided, only the methods
+            that do not require OAuth can be invoked successfully.
+            </param>
+            <returns>
+            A new Tumblr client instance of type <typeparamref name="TClient"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            <typeparamref name="TClient"/> is not <see cref="T:DontPanic.TumblrSharp.TumblrClientBase"/> or <see cref="T:DontPanic.TumblrSharp.Client.TumblrClient"/>.
+            </exception>
+        </member>
+    </members>
+</doc>

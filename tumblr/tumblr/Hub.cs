@@ -14,11 +14,16 @@ namespace tumblr
             StringBuilder sb = new StringBuilder();
             sb.Append("&type=link&tags=" + Uri.EscapeDataString("text,my first post"));
             sb.Append("&title="+ Uri.EscapeDataString("The title of the page the link points to, HTML entities should be escaped"));
-            sb.Append("&url=" + Uri.EscapeDataString("https://ursimple.com"));
-            sb.Append("&description=" + Uri.EscapeDataString("A user-supplied description, HTML allowed"));
-            sb.Append("&thumbnail=" + Uri.EscapeDataString("https://cdn0-a.production.images.static6.com/n9JN76r8ZI1_o-ioRHkAIRFygzw=/640x360/smart/filters:quality(90)/vidio-media-production/uploads/1169411/images/beautiful-20in-20white-20-20westlife-20-shane-20filan-20with-20lyric-c7aa-640x360-00007.jpg"));
-            sb.Append("&excerpt=" + Uri.EscapeDataString("An excerpt from the page the link points to, HTML entities should be escaped")); 
-            sb.Append("&author=" + Uri.EscapeDataString("hackga")); 
+            sb.Append("&body=" + Uri.EscapeDataString("Thats all folks"));
+            
+            //sb.Append("&url=" + Uri.EscapeDataString("https://ursimple.com"));
+            //sb.Append("&description=" + Uri.EscapeDataString("A user-supplied description, HTML allowed"));
+            //sb.Append("&thumbnail=" + Uri.EscapeDataString("https://cdn0-a.production.images.static6.com/n9JN76r8ZI1_o-ioRHkAIRFygzw=/640x360/smart/filters:quality(90)/vidio-media-production/uploads/1169411/images/beautiful-20in-20white-20-20westlife-20-shane-20filan-20with-20lyric-c7aa-640x360-00007.jpg"));
+            //sb.Append("&excerpt=" + Uri.EscapeDataString("An excerpt from the page the link points to, HTML entities should be escaped")); 
+            //sb.Append("&author=" + Uri.EscapeDataString("hackga")); 
+
+
+
             //if (!string.IsNullOrEmpty(link))
             //{
             //    if (type == 2)

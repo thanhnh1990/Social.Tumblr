@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.25" name="mmo">
+  <DataContextMoniker Name="/mmoDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e911890a-64da-46b6-bd9b-2f383f7350ff" absoluteBounds="3.5, 4.25, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/mmoDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18f33ca1-ac41-4cde-aee4-6e133e93c29c" absoluteBounds="3.515, 4.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e2de1a62-8727-4689-a7c1-9875c34bc77c" absoluteBounds="0.75, 2.75, 2, 1.7708968098958335">
+      <DataClassMoniker Name="/mmoDataContext/Source" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b97306d9-6943-4dd5-9c00-7f303a80ac0d" absoluteBounds="0.765, 3.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4f62a1f9-6609-4290-b53d-bcccd52f3e64" absoluteBounds="0.75, 6.125, 2, 2.9247054036458318">
+      <DataClassMoniker Name="/mmoDataContext/Pinterest" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84ca9120-ba71-4189-b20e-10674509fd16" absoluteBounds="0.765, 6.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ec5ee7fb-01a7-4c31-9a8a-d26120e3f495" absoluteBounds="3.5, 1.875, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/mmoDataContext/Posting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d2d45fd5-5209-4c73-9aad-ca1f6def7522" absoluteBounds="3.515, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="deac1572-9b56-4bfd-b5e6-2a7a7fd0310d" absoluteBounds="6.75, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/mmoDataContext/ReachBoardPinterest" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ee62704-8e5d-4720-8a76-31262242d76f" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.20923076923077 : 7.17470540364583); (4.20923076923077 : 7.42470540364583); (4.80461538461539 : 7.42470540364583); (4.80461538461539 : 7.17470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/mmoDataContext/Category/Category_Category" />
+      <nodes>
+        <classShapeMoniker Id="e911890a-64da-46b6-bd9b-2f383f7350ff" />
+        <classShapeMoniker Id="e911890a-64da-46b6-bd9b-2f383f7350ff" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.52089680989583); (3.125 : 4.89589680989583); (3.125 : 3.87346253846154); (3.25357443490112 : 4.00203697336266 : JumpStart); (3.37142556509888 : 4.11988810356042 : JumpEnd); (3.50153746153846 : 4.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/mmoDataContext/Source/Source_Category" />
+      <nodes>
+        <classShapeMoniker Id="e2de1a62-8727-4689-a7c1-9875c34bc77c" />
+        <classShapeMoniker Id="e911890a-64da-46b6-bd9b-2f383f7350ff" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.18807592307692); (3.3125 : 5.62557592307692); (3.3125 : 2.56814697265625); (3.5 : 2.56814697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/mmoDataContext/Pinterest/Pinterest_Posting" />
+      <nodes>
+        <classShapeMoniker Id="4f62a1f9-6609-4290-b53d-bcccd52f3e64" />
+        <classShapeMoniker Id="ec5ee7fb-01a7-4c31-9a8a-d26120e3f495" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.00564697265625); (3.22916666666667 : 3.00564697265625 : JumpStart); (3.39583333333333 : 3.00564697265625 : JumpEnd); (3.5 : 3.00564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/mmoDataContext/Source/Source_Posting" />
+      <nodes>
+        <classShapeMoniker Id="e2de1a62-8727-4689-a7c1-9875c34bc77c" />
+        <classShapeMoniker Id="ec5ee7fb-01a7-4c31-9a8a-d26120e3f495" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

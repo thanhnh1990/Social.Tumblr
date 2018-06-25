@@ -1,0 +1,719 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetOpenAuth.OAuth.Consumer</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetOpenAuth.OAuth.AccessToken">
+            <summary>
+            An OAuth 1.0 access token and secret.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.AccessToken.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.AccessToken"/> struct.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="secret">The secret.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.AccessToken.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.AccessToken.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>
+            The token.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.AccessToken.Secret">
+            <summary>
+            Gets or sets the token secret.
+            </summary>
+            <value>
+            The secret.
+            </value>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.AccessTokenResponse">
+            <summary>
+            Captures the data that is returned from a request for an access token.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.AccessTokenResponse.#ctor(System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.AccessTokenResponse"/> class.
+            </summary>
+            <param name="accessToken">The access token.</param>
+            <param name="tokenSecret">The token secret.</param>
+            <param name="extraData">Any extra data that came with the response.</param>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.AccessTokenResponse.AccessToken">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+            <value>
+            The access token.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.AccessTokenResponse.ExtraData">
+            <summary>
+            Gets or sets any extra data that came with the response..
+            </summary>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.ITemporaryCredentialStorage">
+            <summary>
+            A token manager for use by an OAuth Consumer to store a temporary credential
+            (previously known as "unauthorized request token and secret").
+            </summary>
+            <remarks>
+            The credentials stored here are obtained as described in:
+            http://tools.ietf.org/html/rfc5849#section-2.1
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.ITemporaryCredentialStorage.SaveTemporaryCredential(System.String,System.String)">
+            <summary>
+            Saves the specified temporary credential for later retrieval.
+            </summary>
+            <param name="identifier">The identifier.</param>
+            <param name="secret">The secret.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.ITemporaryCredentialStorage.RetrieveTemporaryCredential">
+            <summary>
+            Obtains a temporary credential secret, if available.
+            </summary>
+            <returns>The temporary credential identifier secret if available; otherwise a key value pair whose strings are left in their uninitialized <c>null</c> state.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.ITemporaryCredentialStorage.ClearTemporaryCredential">
+            <summary>
+            Clears the temporary credentials from storage.
+            </summary>
+            <remarks>
+            DotNetOpenAuth calls this when the credentials are no longer needed.
+            </remarks>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.Consumer">
+            <summary>
+            Provides OAuth 1.0 consumer services to a client or web application.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.Consumer.hostFactories">
+            <summary>
+            The host factories.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.Consumer"/> class.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.#ctor(System.String,System.String,DotNetOpenAuth.OAuth.ServiceProviderDescription,DotNetOpenAuth.OAuth.ITemporaryCredentialStorage,DotNetOpenAuth.IHostFactories)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.Consumer"/> class.
+            </summary>
+            <param name="consumerKey">The consumer key.</param>
+            <param name="consumerSecret">The consumer secret.</param>
+            <param name="serviceProvider">The service provider.</param>
+            <param name="temporaryCredentialStorage">The temporary credential storage.</param>
+            <param name="hostFactories">The host factories.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.RequestNewClientAccountAsync(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Obtains an access token for a new account at the Service Provider via 2-legged OAuth.
+            </summary>
+            <param name="requestParameters">Any applicable parameters to include in the query string of the token request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The access token.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.RequestUserAuthorizationAsync(System.Uri,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Prepares an OAuth message that begins an authorization request that will
+            redirect the user to the Service Provider to provide that authorization.
+            </summary>
+            <param name="callback">The absolute URI that the Service Provider should redirect the
+            User Agent to upon successful authorization, or <c>null</c> to signify an out of band return.</param>
+            <param name="requestParameters">Extra parameters to add to the request token message.  Optional.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The URL to direct the user agent to for user authorization.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.ProcessUserAuthorizationAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Obtains an access token after a successful user authorization.
+            </summary>
+            <param name="authorizationCompleteUri">The URI used to redirect back to the consumer that contains a message from the service provider.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The access token assigned by the Service Provider, or <c>null</c> if no response was detected in the specified URL.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.ProcessUserAuthorizationAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Obtains an access token after a successful user authorization.
+            </summary>
+            <param name="verifier">The verifier.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+            The access token assigned by the Service Provider.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.CreateMessageHandler(DotNetOpenAuth.OAuth.AccessToken,System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Creates a message handler that signs outbound requests with a previously obtained authorization.
+            </summary>
+            <param name="accessToken">The access token to authorize outbound HTTP requests with.</param>
+            <param name="innerHandler">The inner handler that actually sends the HTTP message on the network.</param>
+            <returns>
+            A message handler.
+            </returns>
+            <remarks>
+            Overrides of this method may allow various derived types of handlers to be returned,
+            enabling consumers that use RSA or other signing methods.
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.CreateHttpClient(DotNetOpenAuth.OAuth.AccessToken,System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Creates the HTTP client.
+            </summary>
+            <param name="accessToken">The access token to authorize outbound HTTP requests with.</param>
+            <param name="innerHandler">The inner handler that actually sends the HTTP message on the network.</param>
+            <returns>The HttpClient to use.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.Consumer.CreateHttpClient(DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase)">
+            <summary>
+            Creates the HTTP client.
+            </summary>
+            <param name="innerHandler">The inner handler that actually sends the HTTP message on the network.</param>
+            <returns>The HttpClient to use.</returns>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.Consumer.HostFactories">
+            <summary>
+            Gets or sets the object with factories for host-customizable services.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.Consumer.ConsumerKey">
+            <summary>
+            Gets or sets the Consumer Key used to communicate with the Service Provider.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.Consumer.ConsumerSecret">
+            <summary>
+            Gets or sets the consumer secret.
+            </summary>
+            <value>
+            The consumer secret.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.Consumer.ConsumerCertificate">
+            <summary>
+            Gets or sets the consumer certificate.
+            </summary>
+            <value>
+            The consumer certificate.
+            </value>
+            <remarks>
+            If set, this causes all outgoing messages to be signed with the certificate instead of the consumer secret.
+            </remarks> 
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.Consumer.ServiceProvider">
+            <summary>
+            Gets or sets the Service Provider that will be accessed.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.Consumer.TemporaryCredentialStorage">
+            <summary>
+            Gets or sets the persistence store for tokens and secrets.
+            </summary>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage">
+            <summary>
+            Provides temporary credential storage by persisting them in a protected cookie on the
+            user agent (i.e. browser).
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.TokenCookieKey">
+            <summary>
+            Key used for token cookie
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.httpContext">
+            <summary>
+            Primary request context.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage"/> class
+            using <see cref="P:System.Web.HttpContext.Current"/> as the source for the context to read and write cookies to.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.#ctor(System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage"/> class.
+            </summary>
+            <param name="httpContext">The HTTP context from and to which to access cookies.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.SaveTemporaryCredential(System.String,System.String)">
+            <summary>
+            Saves the temporary credential.
+            </summary>
+            <param name="identifier">The identifier.</param>
+            <param name="secret">The secret.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.RetrieveTemporaryCredential">
+            <summary>
+            Obtains the temporary credential identifier and secret, if available.
+            </summary>
+            <returns>
+            An initialized key value pair if credentials are available; otherwise both key and value are <c>null</c>.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.ClearTemporaryCredential">
+            <summary>
+            Clears the temporary credentials from storage.
+            </summary>
+            <remarks>
+            DotNetOpenAuth calls this when the credentials are no longer needed.
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.ProtectAndEncodeToken(System.String,System.String)">
+            <summary>
+            Protect and url-encode the specified token secret.
+            </summary>
+            <param name="token">The token to be used as a key.</param>
+            <param name="tokenSecret">The token secret to be protected</param>
+            <returns>The encrypted and protected string.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.CookieTemporaryCredentialStorage.DecodeAndUnprotectToken(System.String,System.String)">
+            <summary>
+            Url-decode and unprotect the specified encrypted token string.
+            </summary>
+            <param name="token">The token to be used as a key.</param>
+            <param name="encryptedToken">The encrypted token to be decrypted</param>
+            <returns>The original token secret</returns>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.MemoryTemporaryCredentialStorage">
+            <summary>
+            Non-persistent memory storage for temporary credentials.
+            Useful for installed apps (not redirection based web apps).
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.MemoryTemporaryCredentialStorage.identifier">
+            <summary>
+            The identifier.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.MemoryTemporaryCredentialStorage.secret">
+            <summary>
+            The secret.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.MemoryTemporaryCredentialStorage.SaveTemporaryCredential(System.String,System.String)">
+            <summary>
+            Saves the specified temporary credential for later retrieval.
+            </summary>
+            <param name="identifier">The identifier.</param>
+            <param name="secret">The secret.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.MemoryTemporaryCredentialStorage.RetrieveTemporaryCredential">
+            <summary>
+            Obtains a temporary credential secret, if available.
+            </summary>
+            <returns>
+            The temporary credential secret if available; otherwise <c>null</c>.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.MemoryTemporaryCredentialStorage.ClearTemporaryCredential">
+            <summary>
+            Clears the temporary credentials from storage.
+            </summary>
+            <remarks>
+            DotNetOpenAuth calls this when the credentials are no longer needed.
+            </remarks>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler">
+            <summary>
+            A delegating HTTP handler that signs outgoing HTTP requests 
+            with an HMAC-SHA1 signature.
+            </summary>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase">
+            <summary>
+            A base class for delegating <see cref="T:System.Net.Http.HttpMessageHandler"/>s that sign
+            outgoing HTTP requests per the OAuth 1.0 "3.4 Signature" in RFC 5849.
+            </summary>
+            <remarks>
+            An implementation of http://tools.ietf.org/html/rfc5849#section-3.4
+            </remarks>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.AllowedCharacters">
+            <summary>
+            These are the characters that may be chosen from when forming a random nonce.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.DefaultNonceLength">
+            <summary>
+            The default nonce length.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.DefaultParametersLocation">
+            <summary>
+            The default parameters location.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.epoch">
+            <summary>
+            The reference date and time for calculating time stamps.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ParameterSeparatorAsArray">
+            <summary>
+            An array containing simply the amperstand character.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase"/> class.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase"/> class.
+            </summary>
+            <param name="innerHandler">The inner handler which is responsible for processing the HTTP response messages.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ApplyAuthorization(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Applies OAuth authorization to the specified request.
+            This method is applied automatically to outbound requests that use this message handler instance.
+            However this method may be useful for obtaining the OAuth 1.0 signature without actually sending the request.
+            </summary>
+            <param name="request">The request.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Sends an HTTP request to the inner handler to send to the server as an asynchronous operation.
+            </summary>
+            <param name="request">The HTTP request message to send to the server.</param>
+            <param name="cancellationToken">A cancellation token to cancel operation.</param>
+            <returns>
+            Returns <see cref="T:System.Threading.Tasks.Task`1" />. The task object representing the asynchronous operation.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.Sign(System.Byte[])">
+            <summary>
+            Calculates the signature for the specified buffer.
+            </summary>
+            <param name="signedPayload">The payload to calculate the signature for.</param>
+            <returns>The signature.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.GetSignature(System.Net.Http.HttpRequestMessage,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Gets the OAuth 1.0 signature to apply to the specified request.
+            </summary>
+            <param name="request">The outbound HTTP request.</param>
+            <param name="oauthParameters">The oauth parameters.</param>
+            <returns>
+            The value for the "oauth_signature" parameter.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.GetConsumerAndTokenSecretString">
+            <summary>
+            Gets the "ConsumerSecret&amp;AccessTokenSecret" string, allowing either property to be empty or null.
+            </summary>
+            <returns>The concatenated string.</returns>
+            <remarks>
+            This is useful in the PLAINTEXT and HMAC-SHA1 signature algorithms.
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.UrlEscape(System.String)">
+            <summary>
+            Escapes a value for transport in a URI, per RFC 3986.
+            </summary>
+            <param name="value">The value to escape. Null and empty strings are OK.</param>
+            <returns>The escaped value. Never null.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ToTimeStamp(System.DateTime)">
+            <summary>
+            Returns the OAuth 1.0 timestamp for the current time.
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns>A string representation of the number of seconds since "the epoch".</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.GetBaseStringUri(System.Uri)">
+            <summary>
+            Constructs the "Base String URI" as described in http://tools.ietf.org/html/rfc5849#section-3.4.1.2
+            </summary>
+            <param name="requestUri">The request URI.</param>
+            <returns>
+            The string to include in the signature base string.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ExtractOAuthParametersFromQueryString(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Collects and removes all query string parameters beginning with "oauth_" from the specified request,
+            and returns them as a collection.
+            </summary>
+            <param name="request">The request whose query string should be searched for "oauth_" parameters.</param>
+            <returns>The collection of parameters that were removed from the query string.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ConstructSignatureBaseString(System.Net.Http.HttpRequestMessage,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Constructs the "Signature Base String" as described in http://tools.ietf.org/html/rfc5849#section-3.4.1
+            </summary>
+            <param name="request">The HTTP request message.</param>
+            <param name="oauthParameters">The oauth parameters.</param>
+            <returns>
+            The signature base string.
+            </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.GenerateUniqueFragment">
+            <summary>
+            Generates a string of random characters for use as a nonce.
+            </summary>
+            <returns>The nonce string.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.GetOAuthParameters">
+            <summary>
+            Gets the "oauth_" prefixed parameters that should be added to an outbound request.
+            </summary>
+            <returns>A collection of name=value pairs.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.GetNormalizedParameters(System.Net.Http.HttpRequestMessage,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Gets a normalized string of the query string parameters included in the request and the additional OAuth parameters.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="oauthParameters">The oauth parameters that will be added to the request.</param>
+            <returns>The normalized string of parameters to included in the signature base string.</returns>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.Location">
+            <summary>
+            Gets or sets the location to add OAuth parameters to outbound HTTP requests.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ConsumerKey">
+            <summary>
+            Gets or sets the consumer key.
+            </summary>
+            <value>
+            The consumer key.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.ConsumerSecret">
+            <summary>
+            Gets or sets the consumer secret.
+            </summary>
+            <value>
+            The consumer secret.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.AccessToken">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+            <value>
+            The access token.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.AccessTokenSecret">
+            <summary>
+            Gets or sets the access token secret.
+            </summary>
+            <value>
+            The access token secret.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.NonceLength">
+            <summary>
+            Gets or sets the length of the nonce.
+            </summary>
+            <value>
+            The length of the nonce.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.SignatureMethod">
+            <summary>
+            Gets the signature method to include in the oauth_signature_method parameter.
+            </summary>
+            <value>
+            The signature method.
+            </value>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.OAuthParametersLocation">
+            <summary>
+            The locations that oauth parameters may be added to HTTP requests.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.OAuthParametersLocation.QueryString">
+            <summary>
+            The oauth parameters are added to the query string in the URL.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.OAuth.OAuth1HttpMessageHandlerBase.OAuthParametersLocation.AuthorizationHttpHeader">
+            <summary>
+            An HTTP Authorization header is added with the OAuth scheme.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler"/> class.
+            </summary>
+            <param name="innerHandler">The inner handler which is responsible for processing the HTTP response messages.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler.Sign(System.Byte[])">
+            <summary>
+            Calculates the signature for the specified buffer.
+            </summary>
+            <param name="signedPayload">The payload to calculate the signature for.</param>
+            <returns>
+            The signature.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1HmacSha1HttpMessageHandler.SignatureMethod">
+            <summary>
+            Gets the signature method to include in the oauth_signature_method parameter.
+            </summary>
+            <value>
+            The signature method.
+            </value>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.OAuth1PlainTextMessageHandler">
+            <summary>
+            A delegating HTTP handler that signs outgoing HTTP requests
+            with the PLAINTEXT signature.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1PlainTextMessageHandler.Sign(System.Byte[])">
+            <summary>
+            Calculates the signature for the specified buffer.
+            </summary>
+            <param name="signedPayload">The payload to calculate the signature for.</param>
+            <returns>
+            The signature.
+            </returns>
+            <exception cref="T:System.NotImplementedException">Always thrown.</exception>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1PlainTextMessageHandler.GetSignature(System.Net.Http.HttpRequestMessage,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Gets the OAuth 1.0 signature to apply to the specified request.
+            </summary>
+            <param name="request">The outbound HTTP request.</param>
+            <param name="oauthParameters">The oauth parameters.</param>
+            <returns>
+            The value for the "oauth_signature" parameter.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1PlainTextMessageHandler.SignatureMethod">
+            <summary>
+            Gets the signature method to include in the oauth_signature_method parameter.
+            </summary>
+            <value>
+            The signature method.
+            </value>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler">
+            <summary>
+            A delegating HTTP handler that signs outgoing HTTP requests
+            with an RSA-SHA1 signature.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler"/> class.
+            </summary>
+            <param name="innerHandler">The inner handler which is responsible for processing the HTTP response messages.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler.Sign(System.Byte[])">
+            <summary>
+            Calculates the signature for the specified buffer.
+            </summary>
+            <param name="signedPayload">The payload to calculate the signature for.</param>
+            <returns>
+            The signature.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler.SigningCertificate">
+            <summary>
+            Gets or sets the certificate used to sign outgoing messages.  Used only by Consumers.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.OAuth1RsaSha1HttpMessageHandler.SignatureMethod">
+            <summary>
+            Gets the signature method to include in the oauth_signature_method parameter.
+            </summary>
+            <value>
+            The signature method.
+            </value>
+        </member>
+        <member name="T:DotNetOpenAuth.OAuth.ServiceProviderDescription">
+            <summary>
+            Describes an OAuth 1.0 service provider.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.ServiceProviderDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.ServiceProviderDescription"/> class.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OAuth.ServiceProviderDescription.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.OAuth.ServiceProviderDescription"/> class.
+            </summary>
+            <param name="temporaryCredentialsRequestEndpoint">The temporary credentials request endpoint.</param>
+            <param name="resourceOwnerAuthorizationEndpoint">The resource owner authorization endpoint.</param>
+            <param name="tokenRequestEndpoint">The token request endpoint.</param>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.ServiceProviderDescription.TemporaryCredentialsRequestEndpoint">
+            <summary>
+            Gets or sets the temporary credentials request endpoint.
+            </summary>
+            <value>
+            The temporary credentials request endpoint.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.ServiceProviderDescription.TemporaryCredentialsRequestEndpointMethod">
+            <summary>
+            Gets or sets the HTTP method to use with the temporary credentials request endpoint.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.ServiceProviderDescription.ResourceOwnerAuthorizationEndpoint">
+            <summary>
+            Gets or sets the resource owner authorization endpoint.
+            </summary>
+            <value>
+            The resource owner authorization endpoint.
+            May be <c>null</c> for 2-legged OAuth.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.ServiceProviderDescription.TokenRequestEndpoint">
+            <summary>
+            Gets or sets the token request endpoint.
+            </summary>
+            <value>
+            The token request endpoint.
+            </value>
+        </member>
+        <member name="P:DotNetOpenAuth.OAuth.ServiceProviderDescription.TokenRequestEndpointMethod">
+            <summary>
+            Gets or sets the HTTP method to use with the token request endpoint.
+            </summary>
+        </member>
+    </members>
+</doc>
